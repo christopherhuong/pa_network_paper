@@ -50,9 +50,9 @@ ind_mat <- matrix(c(0, 1, 0, 0,
                     0, 0, 0, 1,
                     1, 0, 1, 1), nrow=4, byrow=T)
 
-pdf(file="supp_2_plots/qgraph_parameters.pdf")
-qgraph(ind_mat, labels=labels, layout="circle", theme="colorblind")
-dev.off()
+# pdf(file="supp_2_plots/qgraph_parameters.pdf")
+# qgraph(ind_mat, labels=labels, layout="circle", theme="colorblind")
+# dev.off()
 
 # Table containing location in 4x4 matrix for each effect
 effect_ind <- which(ind_mat == 1, arr.ind=T) |> data.frame()
@@ -100,7 +100,6 @@ for(i in 1:nrow(effect_ind)){
 # dev.off()
 
 # Plot effects of interest (neg_aff -> PA, PA -> pos_aff, stress -> neg_aff)
-
 titles <- c(expression("(A) Neg_aff"["t-1"]  %->%  "PA"["t"]),
             expression("(B) PA"["t-1"]  %->%  "Pos_aff"["t"]),
             NA,
@@ -133,7 +132,7 @@ dev.off()
 d <- matrix(NA, N, p)
 
 set.seed(1)
-d[1, ] <- rnorm(p, mean=0, sd=0.2) # intialized first row
+d[1, ] <- rnorm(p, mean=0, sd=0.2) # intialize first row
 
 for(t in 2:N){
   for(node in 1:p){
@@ -216,7 +215,7 @@ ep_sel <- c(4, 12, 20) # plot parameters at these estimation points
 
 
 pdf(file = "Fig_4.pdf", height = 8, width = 8)
-
+# Specify layout
 lmat <- matrix(c(0, 1, 2, 3,
                  4, 4, 4, 4,
                  5, 5, 5, 5), ncol=4, byrow = T)
@@ -224,7 +223,7 @@ layout(lmat,
        heights = c(2.5, 0.5, 3), 
        widths = c(1, 2, 2, 2), respect = T)
 
-
+# Plot temporal networks
 for(tp in ep_sel) {
   qgraph(tvvar_mod$wadj[, , 1, tp], 
          layout = "circle",
@@ -238,7 +237,7 @@ for(tp in ep_sel) {
          mar = c(2,5,2,5))
 }
 
-
+# Plot axis w/ estimation points 1-20
 par(mar=c(2,6.5,0,4))
 plot.new()
 plot.window(xlim=c(1,20), ylim=c(0, 50))
