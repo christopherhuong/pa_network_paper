@@ -113,8 +113,8 @@ B_GVAR <- graphicalVAR(B_data,
 
 
 gvar_list <- list(A_PDC = A_GVAR$PDC,
-                  A_PCC = A_GVAR$PCC,
                   B_PDC = B_GVAR$PDC,
+                  A_PCC = A_GVAR$PCC,
                   B_PCC = B_GVAR$PCC)
 
 titles <- c("Individual A: Temporal Network", "Individual B: Temporal Network",
